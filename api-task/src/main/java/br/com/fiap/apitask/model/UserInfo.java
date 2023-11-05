@@ -1,5 +1,6 @@
 package br.com.fiap.apitask.model;
 
+import br.com.fiap.apitask.dto.UserInfoDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,4 +17,13 @@ public class UserInfo {
     private String username;
     private String password;
     private String roles;
+
+
+    public UserInfo (UserInfoDto data) {
+        this.username = data.username();
+        this.password = data.password();
+        this.roles = data.roles();
+    }
+
+    public UserInfo() {}
 }
