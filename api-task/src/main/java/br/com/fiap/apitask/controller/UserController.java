@@ -58,7 +58,15 @@ public class UserController {
 
     @GetMapping("/welcome")
     public String welcome() {
-        return "Voceê não estaá em um ambiente seguro";
+        return "Você não está em um ambiente seguro";
     }
+
+    @GetMapping
+    @RequestMapping("/teste")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public String teste () {
+        return "Página de usuário";
+    }
+
 
 }

@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .csrf().disable()
                     .authorizeRequests()
                     .requestMatchers("/signup", "/signin", "/welcome").permitAll()
-                    .requestMatchers("/users/**").authenticated()
+                    .requestMatchers("/users/**", "task/**", "/teste").authenticated()
                 .and()
                     .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

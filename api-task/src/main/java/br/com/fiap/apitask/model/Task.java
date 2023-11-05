@@ -1,9 +1,7 @@
 package br.com.fiap.apitask.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import br.com.fiap.apitask.dto.CreateTaskDto;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -18,5 +16,15 @@ public class Task {
     private String description;
     private Boolean status;
     private Date dueDate;
+    @ManyToOne
+    @JoinColumn(name="id_task")
+    private UserInfo user;
 
+    public Task (CreateTaskDto data) {
+        this.title = data.title();
+        this.description = data.description();
+        this.dueDate = data.dueDate();
+        this.status = false;
+        this.user = null;
+    }
 }
