@@ -2,7 +2,6 @@ package br.com.fiap.apitask.service;
 
 import br.com.fiap.apitask.dto.UserCreatedDto;
 import br.com.fiap.apitask.model.UserInfo;
-import br.com.fiap.apitask.model.UserInfoDetails;
 import br.com.fiap.apitask.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,9 +25,8 @@ public class UserInfoService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserInfo> userDetail = repository.findByUsername(username);
-        return userDetail
-                .map(UserInfoDetails::new)
+        Optional<UserInfo> userInfo = repository.findByUsername(username);
+        return userInfo
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
     }
 

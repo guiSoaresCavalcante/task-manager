@@ -16,15 +16,15 @@ public class Task {
     private String description;
     private Boolean status;
     private Date dueDate;
-    @ManyToOne
-    @JoinColumn(name="id_task")
-    private UserInfo user;
+    private Boolean isActive;
 
-    public Task (CreateTaskDto data) {
+    public Task(CreateTaskDto data) {
         this.title = data.title();
         this.description = data.description();
         this.dueDate = data.dueDate();
         this.status = false;
-        this.user = null;
+        this.isActive = true;
     }
+
+    public Task() {}
 }
